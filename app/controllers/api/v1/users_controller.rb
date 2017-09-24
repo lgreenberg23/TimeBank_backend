@@ -7,12 +7,13 @@ class Api::V1::UsersController < ApplicationController
   # end
 
   def create
-    @user = User.new(username: params[:username], password:params[:password])
+    @user = User.new(name: params[:username], email: params[:email], password: params[:password])
     if @user.save
-      payload = { user_id: @user.id}
-      render json: {user: @user, jwt: issue_token(payload)}
+      payload = { user_id: @user.id }
+      render json: { user: @user, jwt: issue_token(payload) }
       ## send some message for success
     else
+      render json: { errors: @user.errors.messages }, status: :bad_request
       ## send some error message
     end
   end

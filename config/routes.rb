@@ -8,11 +8,13 @@ Rails.application.routes.draw do
 
     	resources :users
       post '/login', to: 'auth#create'
+      get '/me', to: 'users#me'
     	
-      resources :offer_users
-    	resources :offers 
-    	resources :requests
-    	resources :request_users
+      resources :transactions
+    	# resources :offers 
+    	# resources :requests
+      resources :posts
+
 
     end
   end

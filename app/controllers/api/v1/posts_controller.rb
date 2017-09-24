@@ -1,33 +1,39 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::PostsController < ApplicationController
   before_action :authorized, only: [:me]
   
-  def index
-    @offers = Offer.all
-    render json: @offers
-  end
+	def index
+		@posts = Post.all
+		render json: @posts
+	end
 
 	def create
-
 		user = user.find(params[:user_id])
-		offer = Offer.new(offer_params)
+		post = Post.new(post_params)
 		if user.valid?
-		  offer.user = user 
+		  post.user = user 
 		end
-		offer.save
-		render json: offer
+		post.save
+		render json: post
 
+	end 
+
+	def show
+		user = User.find(find_user_params[:user_id])
+		posts = user.posts
+		render json: posts
 	end
 
 
-  # def me
-  #   render json: current_user
-  # end
 
 	private
 
-	  def offer_params
-	    params.require(:userInput).permit(:name )
-	  end
+	def post_params
+		params.require(:post).permit(:name, :category, :location, :offer, :request, :expiration_date)
+	end
+
+	def find_user_params
+		params.permit(:id)
+	end
 
 
 end
