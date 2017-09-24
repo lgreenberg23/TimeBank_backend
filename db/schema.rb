@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170919180256) do
     t.integer "poster_id"
     t.string "category"
     t.string "location"
+    t.string "description"
     t.datetime "expiration_date"
     t.boolean "offer", default: false
     t.boolean "request", default: false

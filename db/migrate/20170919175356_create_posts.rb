@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.integer :poster_id
       t.string :category
       t.string :location
+      t.string :description
       t.datetime :expiration_date
       t.boolean :offer, default: false
       t.boolean :request, default: false
@@ -13,4 +14,3 @@ class CreatePosts < ActiveRecord::Migration[5.1]
     end
   end
 end
-#guitar_lesson = Post.create(poster_id: 2, name: "offer_name", category: "music", location: "boston", expiration_date:'2017-01-30')

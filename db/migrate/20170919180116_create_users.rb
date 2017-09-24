@@ -13,8 +13,3 @@ class CreateUsers < ActiveRecord::Migration[5.1]
   end
 end
 
-
-# Lauren = User.create(name: "Lauren", email: "lalala", password_digest: "12345") 
-# rachel = User.create(name: "Rachel", email: "rarara", password_digest: "12345") 
-# adina = User.create(name: "Adina", email: "aaaaaa", password_digest: "12345") 
-# rebecca = User.create(name: "Rebecca", email: "rbrbrb", password_digest: "12345")
