@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
   before_action :authorized, only: [:me]
   
 	def index
-		# byebug
+		# eebyebug
 		@posts = Post.all
 		render json: @posts
 	end
