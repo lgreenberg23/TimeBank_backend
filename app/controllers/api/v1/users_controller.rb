@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: [:me]
+  before_action :authorized, only: [:show]
   
   # def index
   #   @users = User.all
@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
 
-  # def me
+  # def show
   #   render json: current_user
   # end
 
