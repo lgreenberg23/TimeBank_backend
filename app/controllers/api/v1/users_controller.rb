@@ -20,13 +20,13 @@ class Api::V1::UsersController < ApplicationController
 
 
   def show
+    posts = current_user.posts
     render json: current_user
   end
 
   # def posts
-  #   todos = current_user.posts
+  #   posts = current_user.posts
   #   render json: posts
-  #   # returns for us a list of the users todos
   # end
 
 

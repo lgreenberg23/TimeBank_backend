@@ -1,29 +1,27 @@
 class Api::V1::PostsController < ApplicationController
   before_action :authorized, only: [:me]
   
-	def index
+	def index #this is the home page
 		@posts = Post.all
 		render json: @posts
 	end
 
 	def create
 		token = params[:token]
-		# decoded_token = JWT.decode(token, "carpediem")
-		decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' } ) 
+		decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' }) 
 		user_id = decoded_token[0]["user_id"]
 
-		byebug
 		user = User.find(user_id)
 		post = Post.new(post_params)
 		if user.valid?
-		  post.user = user 
+		  post.poster = user 
+		  user.poster = true
 		end
 		post.save
 		render json: post
-
 	end 
 
-	def show
+	def show #not sure this is necessary - might do this through the user controller
 		user = User.find(find_user_params[:user_id])
 		posts = user.posts
 		render json: posts
