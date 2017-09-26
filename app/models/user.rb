@@ -2,17 +2,11 @@ class User < ApplicationRecord
 
 	has_secure_password
 
-	has_many :offers, :foreign_key => 'poster_id'
-	has_many :offer_users, :foreign_key => 'acceptor_id'
-	has_many :requests, through: :offer_users
-	# has_many :offers, through: :offer_users
+	has_many :posts, :foreign_key => 'poster_id'
+	has_many :transactions, through: :posts
+	has_many :exchanges, class_name: 'Transaction', :foreign_key => 'contacter_id'
 
-	# same deal for requests 
-	has_many :requests, :foreign_key => 'poster_id'
-	has_many :request_users, :foreign_key => 'acceptor_id'
-	has_many :offers, through: :request_users
-	# has_many :requests, through: :request_users
+
 end
 
-# make TRANSACTIONS table / model
 

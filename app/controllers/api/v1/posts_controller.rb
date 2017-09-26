@@ -2,14 +2,18 @@ class Api::V1::PostsController < ApplicationController
   before_action :authorized, only: [:me]
   
 	def index
-		# byebug
 		@posts = Post.all
 		render json: @posts
 	end
 
 	def create
+		token = params[:token]
+		# decoded_token = JWT.decode(token, "carpediem")
+		decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' } ) 
+		user_id = decoded_token[0]["user_id"]
+
 		byebug
-		user = user.find(params[:user_id])
+		user = User.find(user_id)
 		post = Post.new(post_params)
 		if user.valid?
 		  post.user = user 
@@ -30,7 +34,7 @@ class Api::V1::PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:name, :category, :location, :offer, :request, :expiration_date)
+		params.require(:post).permit(:name, :category, :location, :offer, :request, :description, :expiration_date)
 	end
 
 	def find_user_params
