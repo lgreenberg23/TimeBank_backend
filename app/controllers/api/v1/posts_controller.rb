@@ -2,12 +2,13 @@ class Api::V1::PostsController < ApplicationController
   before_action :authorized, only: [:me]
   
 	def index
-		# eebyebug
+		# byebug
 		@posts = Post.all
 		render json: @posts
 	end
 
 	def create
+		byebug
 		user = user.find(params[:user_id])
 		post = Post.new(post_params)
 		if user.valid?
