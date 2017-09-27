@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: [:show]
+  # before_action :authorized, only: [:me]
   
   # def index
   #   @users = User.all
@@ -18,11 +18,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-
-  def show
-    posts = current_user.posts
+  def me
+    # byebug
     render json: current_user
   end
+
+
+  # def show
+  #   posts = current_user.posts
+  #   render json: current_user
+  # end
 
   # def posts
   #   posts = current_user.posts
