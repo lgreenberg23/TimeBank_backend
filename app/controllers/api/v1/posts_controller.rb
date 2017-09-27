@@ -27,6 +27,21 @@ class Api::V1::PostsController < ApplicationController
 		render json: posts
 	end
 
+	# def update
+ #    comment = Comment.find_by(text: update_comment_params[:oldText])
+ #    comment.update(text: update_comment_params[:input])
+ #    breed = Breed.find_by(name: update_comment_params[:breed])
+ #    comments = breed.comments
+ #    render json: comments
+ #  end
+
+	def destroy
+		post = Post.find(params[:id])
+		# byebug
+    	post.destroy
+	   posts = Post.all
+    	render json: posts
+   end
 
 
 	private
