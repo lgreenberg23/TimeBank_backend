@@ -5,14 +5,13 @@ class Api::V1::TransactionsController < ApplicationController
 		render json: transactions
 	end
 
-	  # "post_id"
-   #   "contacter_id"
-
 	def create
-		user = current_user
+		token = params[:token]
+		decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' }) 
+		user_id = decoded_token[0]["user_id"]
+		user = User.find(user_id)
 		post = Post.find(params[:post_id])
-		# byebug
-		transaction = Transaction.new(post_id: post, contacter_id: user)
+		transaction = Transaction.new(post_id: post.id, contacter_id: user_id)
 		if user.valid?
 		  user.contacter = true
 		end
