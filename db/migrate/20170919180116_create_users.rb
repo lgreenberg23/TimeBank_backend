@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.integer :hours_banked, default: 0
       t.string :password_digest
       t.boolean "poster", default: false
-      t.boolean "acceptor", default: false
+      t.boolean "contacter", default: false
 
       t.timestamps
     end

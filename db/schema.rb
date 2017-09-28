@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170919180256) do
     t.boolean "verified", default: false
     t.integer "post_id"
     t.integer "contacter_id"
-    t.integer "hours"
+    t.integer "hours", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170919180256) do
     t.integer "hours_banked", default: 0
     t.string "password_digest"
     t.boolean "poster", default: false
-    t.boolean "acceptor", default: false
+    t.boolean "contacter", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

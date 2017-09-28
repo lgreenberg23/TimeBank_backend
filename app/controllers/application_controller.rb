@@ -14,13 +14,11 @@ class ApplicationController < ActionController::API
 	 end
 
 	 def token
-
 	   if bearer_token = request.headers["Authorization"]
 	     	jwt_token = bearer_token.split(' ')[1]
 	   else
 	     	# no return
 	   end
-
 	 end
 
 	 def current_user

@@ -4,7 +4,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.boolean :verified, default: false #transfer could take the place of this
       t.integer :post_id
       t.integer :contacter_id
-      t.integer :hours
+      t.integer :hours, default: 0
 
       t.timestamps
     end

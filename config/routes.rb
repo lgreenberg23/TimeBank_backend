@@ -11,10 +11,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
     	
       resources :transactions
-    	# resources :offers 
-    	# resources :requests
       resources :posts
-
 
     end
   end

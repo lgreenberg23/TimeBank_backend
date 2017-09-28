@@ -1,5 +1,4 @@
 class Api::V1::PostsController < ApplicationController
-  before_action :authorized, only: [:me]
   
 	def index #this is the home page
 		@posts = Post.all
@@ -28,12 +27,18 @@ class Api::V1::PostsController < ApplicationController
 	end
 
 	# def update
+	 # 		token = params[:token]
+		# decoded_token(token)
+		# user_id = decoded_token[0]["user_id"]
+		# user = User.find(user_id)
+		# post = Post.find(params[:id])
  #    comment = Comment.find_by(text: update_comment_params[:oldText])
  #    comment.update(text: update_comment_params[:input])
  #    breed = Breed.find_by(name: update_comment_params[:breed])
  #    comments = breed.comments
  #    render json: comments
  #  end
+
 
 	def destroy
 		post = Post.find(params[:id])
