@@ -17,7 +17,7 @@ class Api::V1::TransactionsController < ApplicationController
 		end
 		transaction.save
 
-		render json: transaction
+		render json: { transaction: transaction, user: user, post: post }
 	end 
 
 	# def update
