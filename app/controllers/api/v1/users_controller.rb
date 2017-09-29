@@ -23,10 +23,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
 
-  # def show
-  #   posts = current_user.posts
-  #   render json: current_user
-  # end
+  def show
+    user = User.find(params[:id])
+    render json: user
+  end
 
   # def posts
   #   posts = current_user.posts
