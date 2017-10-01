@@ -11,7 +11,9 @@ class Api::V1::TransactionsController < ApplicationController
 		user_id = decoded_token[0]["user_id"]
 		user = User.find(user_id)
 		post = Post.find(params[:post_id])
-		transaction = Transaction.new(post_id: post.id, contacter_id: user_id)
+
+		hours = params[:hours]
+		transaction = Transaction.new(post_id: post.id, contacter_id: user_id, hours: hours.to_i)
 		if user.valid?
 		  user.contacter = true
 		end

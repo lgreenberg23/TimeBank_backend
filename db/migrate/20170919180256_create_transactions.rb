@@ -5,6 +5,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.integer :post_id
       t.integer :contacter_id
       t.integer :hours, default: 0
+      t.boolean :accepted, default: false
 
       t.timestamps
     end
