@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :users
       post '/login', to: 'auth#create'
     	
+      get '/transactions/:user_id', to: 'transactions#userTransactions'
       resources :transactions
       resources :posts
 

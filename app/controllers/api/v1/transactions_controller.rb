@@ -1,7 +1,9 @@
 class Api::V1::TransactionsController < ApplicationController
   
-	def index #not sure this is necessary
-		transactions = Transaction.all
+	def index
+		# transactions = Transaction.all
+		# transactions = [Transaction.first]
+		byebug
 		render json: transactions
 	end
 
@@ -21,6 +23,14 @@ class Api::V1::TransactionsController < ApplicationController
 
 		render json: { transaction: transaction, user: user, post: post }
 	end 
+
+	def userTransactions
+		# byebug
+		transactions = Transaction.where("contacter_id = ?", params[:user_id]) 
+		render json: transactions
+	end
+
+
 
 	# def update
 	 # 		token = params[:token]
