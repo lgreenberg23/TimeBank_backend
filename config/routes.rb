@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
     	
       get '/transactions/:user_id', to: 'transactions#userTransactions'
+      post '/transactions/modify/:id', to: 'transactions#changeStatus'
       resources :transactions
       resources :posts
 

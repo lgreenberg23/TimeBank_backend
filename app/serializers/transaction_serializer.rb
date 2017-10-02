@@ -1,4 +1,4 @@
 class TransactionSerializer < ActiveModel::Serializer
-	attributes :contacter, :post, :accepted, :hours, :verified 
+	attributes :id, :contacter, :post, :status, :hours, :verified, :message
 	belongs_to :post
 end
