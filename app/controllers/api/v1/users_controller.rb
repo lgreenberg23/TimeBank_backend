@@ -22,6 +22,37 @@ class Api::V1::UsersController < ApplicationController
     render json: current_user
   end
 
+  def updateHours
+    yourHours = 0
+    theirHours = 0
+
+    token = params[:token]
+    decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' }) 
+    user_id = decoded_token[0]["user_id"]
+    user1 = User.find(user_id)
+    user2 = User.find(params[:other_user_id])
+
+    # if you received help with something, 
+    # subtract the hours spent from your total hours and add to theirs
+    if params[:type] == 'Offer' 
+      yourHours = user1.hours_banked.to_i - (params[:hours].to_i)
+      theirHours = user2.hours_banked.to_i + params[:hours].to_i
+
+    else #you took someone up on a request, meaning you gave them help
+        # so add to your hours and subtract from theirs
+      yourHours = user1.hours_banked.to_i + params[:hours].to_i
+      theirHours = user2.hours_banked.to_i - (params[:hours].to_i)
+    end
+
+    
+    user1.update(hours_banked: yourHours)
+    user2.update(hours_banked: theirHours)
+
+    users = User.all
+
+    render json: users
+
+  end
 
   def show
     user = User.find(params[:id])

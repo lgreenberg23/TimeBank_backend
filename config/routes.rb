@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
       get '/me', to: 'users#me'
       resources :users
+      post '/users/hours/:id', to: 'users#updateHours'
+     
       post '/login', to: 'auth#create'
     	
       get '/transactions/:user_id', to: 'transactions#userTransactions'
