@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     	
       get '/transactions/:user_id', to: 'transactions#userTransactions'
       post '/transactions/modify/:id', to: 'transactions#changeStatus'
+      post 'transactions/hours/:id', to: 'transactions#verify'
       resources :transactions
       resources :posts
 

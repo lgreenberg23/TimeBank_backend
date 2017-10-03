@@ -24,6 +24,11 @@ class Api::V1::TransactionsController < ApplicationController
 		render json: { transaction: transaction, user: user, post: post }
 	end 
 
+	def userTransactions
+		transactions = Transaction.where("contacter_id = ?", params[:user_id]) 
+		render json: transactions
+	end
+
 	def changeStatus
 		token = params[:token]
 		decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' }) 
@@ -40,9 +45,19 @@ class Api::V1::TransactionsController < ApplicationController
 	end
 
 
-	def userTransactions
-		transactions = Transaction.where("contacter_id = ?", params[:user_id]) 
-		render json: transactions
+
+	def verify
+		token = params[:token]
+		decoded_token = JWT.decode(token, "carpediem", true, { :algorithm => 'HS256' }) 
+		user_id = decoded_token[0]["user_id"]
+		user = User.find(user_id)
+		
+		transaction = Transaction.find(params[:transaction_id])
+    	transaction.update(verified: true, hours_logged: params[:hours].to_i)   
+ 		# render json: transaction --> then on the front end in the reducer have to slice and do a replace
+
+ 		transactions = Transaction.all
+    	render json: transactions
 	end
 
 
