@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171003144306) do
     t.integer "post_id"
     t.integer "contacter_id"
     t.integer "hours", default: 0
+    t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending"
