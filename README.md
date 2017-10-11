@@ -13,7 +13,7 @@ This is an API made to be used with timebank_frontend. It stores user data to cr
 Ruby on Rails
 PostgreSQL
 
-# Key Gems
+### Key Gems
 bcrypt gem to store hashed passwords
 
 
