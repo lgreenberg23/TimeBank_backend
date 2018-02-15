@@ -19,5 +19,6 @@ bcrypt gem to store hashed passwords
 
 ## External Inspriation / Resources:
 https://westseattle.timebanks.org/offers
+
 http://hourworld.org/_TimeAndTalents.htm
 
